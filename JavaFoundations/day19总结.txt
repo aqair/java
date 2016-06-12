@@ -1,0 +1,119 @@
+1：总结集合，请参照集合的总结图.bmp即可。
+
+2：异常(理解)
+	(1)程序出现的不正常的情况。
+	(2)异常的继承体系结构：
+		Throwable
+			|--Error	严重的问题，一般我们解决不了。
+			|--Exception
+				|--RuntimeException	运行时期异常，这种问题一般要修正代码。
+				|--非RuntimeException	编译时期异常，必须进行处理，否则代码不能够通过。
+
+		举例：
+			石家琦骑自行车去山区旅游。
+			问题1：山路塌陷
+			问题2：车没有轮胎
+			问题3：好路不走，偏偏走石子路
+	(3)JVM针对异常的默认处理方案：
+		默认情况下，会把异常的类名，原因，及错误出现的位置输出在控制台。
+		并从这个地方终止程序运行。
+	(4)我们自己如何针对程序进行处理：
+		A:try...catch...finally
+			基本格式：
+				try {
+					可能有问题的代码。
+				}catch(异常类名 变量名){
+					异常的处理。
+				}finally {
+					释放资源。(IO，数据库操作比较常见)
+				}
+			变形格式：
+				try...catch...
+				try...catch...catch...
+				try...catch...finally...
+				try...catch...catch...finally...
+				try...finally...
+
+			针对一个try多个catch的情况：
+
+				父异常必须放最后。
+				try{
+				
+				}catch(){
+				
+				}catch(){
+				
+				}
+
+				JDK7的新特性：这个要求都是平级关系。
+
+				try{
+				
+				}catch(异常1 | 异常2 ... 变量){}
+		B:throws
+			后面跟的是异常类名。
+			位置：在方法的()后面。
+
+		注意：
+			能try...catch就不要throws。
+			但是，目前讲课为了方便，我都throws。
+	(5)编译时期异常和运行时期异常的区别?
+		A:编译时期异常 必须进行处理的。
+		B:运行时期异常 可以处理，也可以不处理。
+	(6)throws和throw的区别?
+		A:throws
+			位置：在方法()后面，跟的是类名。
+			如果后面根据的是RuntimeException及其子类，那么，该方法可以不用处理。
+			如果后面根据的是Exception及其子类，那么，必须要编写代码进行处理，或者调用的时候抛出。
+		B:throw
+			位置：在方法中，跟的对象名称。
+			如果方法中，有throw抛出RuntimeException及其子类，那么，声明上可以没有throws。
+			如果方法中，有throw抛出Exception及其子类，那么，声明上必须有throws。
+	(7)自定义异常
+		只需要继承自Exception或者RuntimeException。
+		提供构造方法即可。
+
+3：File(理解)
+	(1)IO流操作最主要的作用就是上传文件和下载文件。
+	   而File类是java提供给我们用来表示文件的类。
+	(2)File的构造方法：
+		A:File file = new File("d:\\a.txt");
+		B:File file = new File("d:\\","a.txt");
+		C:File file = new File("d:\\");
+		  File file2 = new File(file,"a.txt");
+	(3)File类的常见功能：(自己补齐)
+		A:创建功能
+		创建文件
+  			public boolean createNewFile():如果文件存在，就不创建。否则，创建。
+  		创建文件夹
+ 			public boolean mkdir():如果文件夹存在，就不创建。否则，创建。
+ 			public boolean mkdirs():如果多级文件夹存在，就不创建。否则，创建。
+		B:删除功能
+		public boolean delete() 删除文件或者文件夹。
+		C:重命名功能
+		public boolean renameTo(File dest):
+ 			如果路径相同，就是改名。
+			如果路径不同，就是剪切。
+		D:判断功能
+		public boolean canRead():是否可读
+ 		public boolean canWrite():是否可写
+ 		public boolean isHidden():是否隐藏
+  		public boolean isDirectory():是否是文件夹
+ 		public boolean isFile():是否是文件
+		public boolean exists():是否存在
+		E:获取功能
+		public String getAbsolutePath():获取绝对路径
+		public String getPath():获取相对路径
+ 		public String getName():获取名称
+  		public long length():获取文件字节数
+ 		public long lastModified():获取最后一次修改时间的毫秒值
+		F:高级获取功能
+		public String[] list():获取指定目录下的所有文件或者文件夹的名称(String)数组。
+		public File[] listFiles():获取指定目录下的所有文件或者文件夹的文件(File)数组。
+		G:带过滤器的高级获取功能
+		public String[] list(FilenameFilter filter):
+	(4)案例：
+		A:获取指定目录下指定后缀名的文件的名称。
+			a:基本做法。先获取所有的，然后遍历的时候，判断。
+			b:用过滤器的做法。先判断，获取，最后遍历。
+		B:批量修改文件名称。

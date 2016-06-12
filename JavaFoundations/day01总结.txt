@@ -1,0 +1,123 @@
+1：计算机的基础知识(了解)
+	(1)计算机
+		俗称：电脑
+	(2)计算机硬件
+		支撑电脑软件执行的装备
+	(3)计算机软件
+		按照某种要求能够自动执行的东西。
+
+		系统软件：
+			windows,linux,mac,android
+		应用软件：
+			QQ,Editpls,飞Q
+	(4)软件开发
+		用开发工具+计算机语言制作软件
+	(5)计算机语言
+		人和计算机交流的一种特殊表现形式。
+		计算机只能识别0，1这样的数据。
+	(6)人机交互
+		图形界面方式：方便直观。
+		DOS窗口方法：需要记忆命令，稍微复杂。
+	(7)功能键和快捷键(掌握)
+		tab,shift,alt,ctrl,windows,空格,prtsc,上下左右键,回车键
+	(8)DOS命令(掌握)
+		A:盘符的切换：
+			d:回车
+		B:cd进入目录
+			单级
+			多级
+		C:回退目录
+			单级
+			多级
+
+2：Java语言的知识(了解)
+	(1)Java语言的发展史。
+		詹姆斯-高斯林 Java之父。
+	(2)版本：
+		1.4.2
+		1.5 -- 5.0
+		1.6 -- 6.0
+		1.7 -- 7.0
+	(3)Java的平台
+		A:JavaSE 桌面应用程序，其他两种的基础。
+		B:JavaME 移动设备的开发,目前我们要学习的话就学习android。
+		C:JavaEE web页面的开发,企业级开发,这是我们的重点。
+	(4)java语言的特点
+		A:几个小特点，将来都会学到。
+		B:两个比较重要的特点：
+			开源
+			跨平台
+	(5)java语言如何实现跨平台的呢(理解)
+		通过一个语言翻译的原理讲解的。
+
+		java语言的翻译是jvm。java虚拟机。
+
+		Java语言是跨平台的，jvm不是跨平台的。
+
+3：Java语言的开发和执行流程(掌握)
+	(1)JDK,JRE各自的作用
+		JDK: JRE+开发工具 是java程序的开发环境
+		JRE: JVM+class library 是java程序的运行环境
+		JVM: 保证Java语言跨平台
+	(2)JDK的下载，安装，卸载。
+		注意：
+			安装过程中，建议不要有空格和中文目录，以及其他的特殊字符目录。
+	(3)HelloWorld案例：
+		在JDK的安装的bin目录下。
+
+		class HelloWorld
+		{
+			public static void main(String[] args)
+			{
+				System.out.println("HelloWorld");
+			}
+		}
+
+		解释：
+			java程序的最基本单位是类。
+
+			A:class HelloWorld
+				class是定义类的关键字。后面跟的是类的名称。
+			B:public static void main(String[] args)
+				主方法，被jvm调用。是java程序的入口。java程序的执行必须从这里开始。
+			C:System.out.println("HelloWorld");
+				输出语句，"HelloWorld"的内容是可以改变的。
+				最后的分号不能少，是该语句的一个组成部分。
+
+		注意事项：
+			A:括号的问题。配对要一致。
+			B:格式的问题。该空格的，一定要空格。遇到{一般都会缩进一个tab的位置。
+	(4)Java程序的开发和执行流程
+		A:编写一个java源文件。
+		B:通过javac命令编译该文件，生成class文件。字节码文件。
+			javac java源文件名称
+		C:通过java命令执行class文件。
+			java class文件名不包括扩展名
+
+		举例：
+			javac HelloWorld.java
+			java HelloWorld
+
+4：常见问题(掌握)
+	(1)文件后缀名被隐藏。
+	(2)大小写，及单词的拼写。
+	(3)非法字符的问题，肯定是中英文的问题。
+
+5：环境变量(理解)
+	(1)path环境变量
+		path路径中配置某目录，那么，将来该目录下的exe文件的名称，就可以直接在dos窗口执行。
+
+		A:方式一
+			直接把D:\develop\Java\jdk1.7.0_60\bin添加到path的最前面。
+		B:方式二
+			新建JAVA_HOME,值是：D:\develop\Java\jdk1.7.0_60
+			修改path,值是：%JAVA_HOME%\bin;以前的path内容。
+
+		作用：是为了javac命令可以在任意目录下执行。
+
+	(2)classpath环境变量
+		配置：
+			新建classpath,值就是class文件所在的目录。
+
+
+		作用：是为了class文件可以在任意目录下执行。

@@ -1,0 +1,115 @@
+1：正则表达式(理解)
+	(1)符合一定规则的字符串。
+	(2)规则：
+		A：字符
+			x 字符 x
+			\\ 反斜线字符
+			\r 回车
+			\n 换行
+
+		B：字符类
+			[abc] a、b 或 c（简单类） 
+			[^abc] 任何字符，除了 a、b 或 c（否定） 
+			[a-zA-Z] a 到 z 或 A 到 Z，两头的字母包括在内 
+			[0-9] 0-9的数字字符
+
+		C：预定义字符类
+			. 任何字符
+			\d 数字：[0-9]
+			\w 单词字符：[a-zA-Z_0-9]
+				在正则表达式中可以组成单词的字符。 
+			
+		D：边界匹配器
+			^ 行的开头 
+			$ 行的结尾
+			\b 单词边界 (出现的地方不能是单词字符。)
+				hello,world ja?v;a
+				
+				hello
+				world
+				ja
+				v
+				a
+
+		E：数量词
+			X? X，一次或一次也没有 
+			X* X，零次或多次 
+			X+ X，一次或多次 
+			X{n} X，恰好 n 次 
+			X{n,} X，至少 n 次 
+			X{n,m} X，至少 n 次，但是不超过 m 次9 
+	(3)正则表达式的功能：
+		A:判断功能
+			String -- public boolean matches(String regex)
+		B:分割功能
+			String -- public String[] split(String regex)
+		C:替换功能
+			String -- public String replaceAll(String regex,String replacement)
+		D:获取功能
+			Pattern -- public static Pattern compile(String regex)
+				   public Matcher matcher(String input)
+			Matcher -- public boolean find()
+			           public String group()
+	(4)案例：
+		A:校验QQ号码。
+		B:校验电话号码。
+		C:校验邮箱。
+		D:按要求分割字符串。
+		E:把论坛中的所有数字用*替换。
+		F:获取三个字符组成的单词。
+
+2：Random(理解)
+	(1)用于产生随机数的类。
+	(2)构造方法：
+		Random:没有种子。每次产生的都是变化的。
+		Random(long seed):有种子。种子一样，产生的随机数一致。
+	(3)成员方法：
+		int nextInt():返回int范围
+		int nextInt(int n):返回[0,n)范围
+	(4)案例：
+		获取随机姓名。
+
+3：System(理解)
+	(1)系统类，提供了一些静态的功能供我们使用。
+	(2)成员方法：
+		A:public static void gc() 运行垃圾回收器。 
+		B:public static void exit(int status)
+			终止当前正在运行的 Java 虚拟机。
+			参数用作状态码；根据惯例，非 0 的状态码表示异常终止。 
+		C:public static long currentTimeMillis()返回以毫秒为单位的当前时间。
+		D:public static void arraycopy(Object src,
+                             int srcPos,
+                             Object dest,
+                             int destPos,
+                             int length)
+
+4：Date/DateFormat/Calendar(掌握)
+	(1)Date 日期类。可以精确到毫秒。
+		A:构造方法
+			Date()
+			Date(long time)
+		B:成员方法
+			void setTime(long time)
+			long getTime()
+		C:要掌握的内容
+			如何得到毫秒值：
+				Date --	getTime()
+				System -- currentTimeMillis()
+			如何设置日期的毫秒值：
+				Date -- Date(long time)
+				Date -- setTime(long time)
+	(2)DateFormat 对日期进行格式化和解析的类。
+		A:Date -- String
+			SimpleDateFormat类的public final String format(Date date)
+		B:String -- Date
+			SimpleDateFormat类的public Date parse(String source)
+		C:DateUtil的使用。
+	(3)Calendar 日历类。把时间给分割成一个个的日历字段，
+		    你可以通过get方法根据给定的日历字段获取对应的值。来组合一个完整的时间。
+		A:根据给定的日历字段获取对应的值
+			public int get(int field)
+		B:设置年月日
+			public final void set(int year,int month,int date)
+		C:根据给定的日历字段和值，来决定是加还是减去对应的值
+			public void add(int field,int amount)
+		D:获取任意一年的2月份有多少天?

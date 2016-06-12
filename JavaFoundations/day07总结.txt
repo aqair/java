@@ -1,0 +1,226 @@
+1:变量什么时候该定义成员变量(掌握)
+	(1)如果变量和类之间存在这描述性的关系，就该定义为成员变量。
+	(2)注意：
+		变量的定义范围越小越好。
+
+2:引用类型作为形式参数和返回值(掌握)
+	(1)顾客点菜案例。
+		顾客--服务员--厨师
+	(2)引用类型作为参数和返回值的问题：
+		A:如果一个方法的形式参数是一个类名，那么，这里肯定需要的是该类的对象。
+		B:如果一个方法的返回值是一个类名，那么，这里返回的肯定是该类的对象。
+
+		class Demo {
+			public void printStudent(Student s) {
+				s.show();
+			}
+
+			public Student getStudent() {
+				Student s = new Student();
+				return s;
+			}
+		}
+
+3:匿名对象(理解)
+	(1)就是没有名字的对象。
+	(2)应用场景：
+		A:调用方法。但是仅仅只调用一次的时候使用。
+		B:作为实际参数传递。
+			Demo d = new Demo();
+			d.printStudent(new Student());
+
+4:封装(理解)
+	(1)隐藏实现细节，提供公共的访问方式。
+	(2)体现有哪些呢?
+		A:类
+		B:方法体
+		C:private修饰成员变量
+	(3)private关键字：
+		是私有的意思。可以修饰类中的成员变量和成员方法。
+		注意：被它修饰的成员只能在本类中被访问。
+	(4)标准代码：
+		class Student {
+			private String name;
+			private int age;
+
+			public void setName(String n) {
+				name = n;
+			}
+
+			public String getName() {
+				return name;
+			}
+
+			public void setAge(int a) {
+				age = a;
+			}
+
+			public int getAge() {
+				return age;
+			}
+		}
+
+5:构造方法(掌握)
+	(1)创建对象，并对对象的内容进行初始化。
+	(2)特点：
+		A:方法名和类名相同。
+		B:没有返回值类型。
+		C:没有返回值。
+	(3)注意事项：
+		A:如果我们没给构造方法，系统给出一个默认构造。无参构造。
+		B:如果我们给出了构造方法，系统将不再提供构造方法。
+			这个时候，要么我们不使用无参构造方法。
+			要么，自己定义一个，然后使用。
+
+			推荐：自己给出无参构造方法。
+	(4)给成员变量赋值的方式：
+		A:无参+setXxx()
+		B:带参
+	(5)获取值：
+		getXxx()
+	(6)标准代码：
+		class Student {
+			private String name;
+			private int age;
+
+			public Student() {}
+
+			public Student(String n,int a) {
+				name = n;
+				age = a;
+			}
+
+			public void setName(String n) {
+				name = n;
+			}
+
+			public String getName() {
+				return name;
+			}
+
+			public void setAge(int a) {
+				age = a;
+			}
+
+			public int getAge() {
+				return age;
+			}
+		}
+
+6：this关键字。(掌握)
+	(1)代表当前类的一个对象。谁调用代表谁。
+	(2)应用场景：
+		A:使用本类的成员变量(掌握)
+			this.变量名;
+		B:使用本类其他构造方法
+			this(...)
+		C:使用本类的其他成员方法
+			this.方法名();
+	(3)标准代码：
+		class Student {
+			private String name;
+			private int age;
+
+			public Student() {}
+
+			public Student(String name,int age) {
+				this.name = name;
+				this.age = age;
+			}
+
+			public void setName(String name) {
+				this.name = name;
+			}
+
+			public String getName() {
+				return name;
+			}
+
+			public void setAge(int age) {
+				this.age = age;
+			}
+
+			public int getAge() {
+				return age;
+			}
+		}
+
+		测试类：
+			Student s = new Student();
+			s.setName("林青霞");
+			s.setAge(27);
+			System.out.println(s.getName()+"---"+s.getAge());
+
+			Student ss = new Student("林青霞",27);
+			System.out.println(ss.getName()+"---"+ss.getAge());
+	(4)案例：
+		A:手机标准代码案例及测试。
+		B:长方形标准代码案例及测试。
+
+7：static关键字(理解)
+	(1)是静态的意思，可以修饰类中成员变量和成员方法。
+	(2)静态的特点：
+		A:随着类的加载而加载。
+		B:优先于对象存在。
+		C:被所有对象共享的数据。
+			这个也被我们作为为什么要使用静态的一个判断条件。
+			举例：饮水机和水杯。
+		D:让我们的调用多了一种方式：
+			a:非静态的数据，必须创建对象访问。
+			b:静态的数据，可以通过对象访问，也可以通过类名访问。
+	(3)静态的访问问题：
+		A:非静态方法
+			非静态成员变量
+			静态成员变量
+			非静态成员方法
+			静态成员方法	
+		B:静态方法
+			静态成员变量
+			静态成员方法	
+
+		总之：静态只能访问静态。
+
+		称呼：
+			静态的成员被成为类成员。跟类相关。
+			非静态的成员被称为实例成员。跟对象相关。
+	(4)main方法的解释以及如何接收键盘录入数据：
+		public:权限最大
+		static:静态，不用创建对象。
+		void:返回没有意义。
+		main:大家都是这样做的。
+		String[] args:接收键盘录入数据。
+		接收键盘录入的格式：
+			java HelloWorld hello world java
+			java HelloWorld 10 20 30
+
+8：代码块(理解)
+	(1)用{}括起来的代码。
+	(2)分类：
+		A:局部代码块。
+			方法内。
+			作用：限定变量的生命周期，提高效率。
+		B:构造代码块。
+			类中，方法外。
+			作用：把所有构造方法中相同的代码定义到一处。
+		C:静态代码块。
+			类中，方法外，加static。
+			作用：在整个系统运行过程中只执行一次的内容。
+	(3)面试题：
+		构造方法，构造代码块，静态代码块的执行流程?
+		静态代码块 -- 构造代码块 -- 构造方法。
+
+		特点：
+			静态代码块只执行一次。
+			构造代码块每次调用构造方法都执行。
+
+9：一个类的实例化过程(理解)
+	Person p = new Person();
+
+	A:把Person.class加载到内存。
+	B:在栈内存为p变量开辟空间。
+	C:在堆内存为Person对象开辟空间。
+	D:对成员变量进行默认初始化。
+	E:对成员变量进行显示初始化。
+	F:如果有构造代码块，通过构造代码块对成员变量进行初始化。
+	G:通过构造方法对成员变量进行初始化。
+	I:对象初始化完毕，把堆内存的地址给p变量。

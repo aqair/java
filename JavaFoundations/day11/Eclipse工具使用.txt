@@ -1,0 +1,208 @@
+1:Java开发工具的使用(了解)
+	A:Notepad windows自带的记事本。
+	B:高级记事本
+		Editplus
+		Notepat++
+		UE
+	C:集成开发工具(IDE Integrated Drive Electronics)
+		开发和运行。
+		Eclipse
+		MyEclipse = Eclipse + 插件
+
+		Netbeans(AWT 图形)
+
+2:Eclipse概述(了解)
+	A:是一个集成的开发工具。专门针对Java的。
+	B:由IBM公司花了4千万美金。
+		IBM,Oracle,Microsoft...
+	C:Eclipse
+		免费
+		开源
+		由纯Java语言编写。所以，它需要你有一个JRE，最好还配置了环境变量。
+	D:MyEclipse
+		具有良好的扩展插件功能，但是针对插件收费。
+
+3:Eclipse的下载，安装和卸载。(掌握)
+	A:下载：http://eclipse.org/
+	B: 安装软件卸载
+		a:绿色版
+			解压就可以使用。
+		b:安装包
+			双击，然后next...
+	C:卸载
+		a:针对绿色版，直接删除文件夹。
+		b:针对安装包，建议用专业的软件卸载(360软件卸载)，或者控制面板添加删除程序。
+
+		注意事项：
+			任何跟开发相关的软件安装，建议不要有空格，中文目录，或其他特殊的。
+	D:汉化
+		加汉化包。
+		怎么加呢?
+			复制汉化包，扔到C:\eclipse-SDK-3.7.2-win64\eclipse\dropins目录中。启动或者重启Eclipse。
+
+4:Eclipse的基本使用(掌握)
+	A:选择工作空间
+		工作空间：其实就是我们将来的指定源代码所在的目录。
+
+	B:使用步骤：
+		a:在左边空白处或者点击File建立Java项目
+			在界面中写入一个项目名称，然后Finish即可。
+		b:展开项目，在包src下建立一个普通包。cn.itcast
+		c:在cn.itcast包下建立一个类
+			在界面中写一个类名：HelloWorld。
+			并选择让main方法也被创建。
+			然后Finish即可。
+		d:在类中写功能
+			在main里面写一条输出语句。
+		e:编译和运行
+			编译：自动编译。在保存的那一刻已经帮你编译好了，如果有问题，会报错。
+			运行：
+				A:点击虫子后面的绿色内在三角形按钮。
+					不建议。
+				B:点击Run菜单下的run。
+					也可以使用快捷键 Ctrl+F11
+				C:选择要运行的文件或者在要运行的文件内容中
+					右键 -- Run as - Java Application即可。
+				D:看到Console即可，它就是Eclipse自带的控制台。
+
+5:针对空间的一些简单配置(掌握)
+	A:程序的编译和运行的环境配置(一般不改)
+		window -- Preferences -- Java
+			编译环境：Compiler	默认选中的就是最高版本。
+			运行环境：Installed JREs	默认会找你安装的那个JDK。建议配置了Java的环境变量。
+		
+		问题：
+			低编译，高运行。可以。
+			高编译，低运行。不可以。
+			建议，编译和运行的版本一致。
+	B:如何去掉默认注释?
+		window -- Preferences -- Java -- Code Style -- Code Templates
+			选择你不想要的内容，通过右边Edit编辑。
+			注意：请只删除注释部分，不是注释部分的不要删除。
+	C:行号的显示和隐藏
+		显示：在代码区域的最左边的空白区域，右键 -- Show Line Numbers即可。
+		隐藏：把上面的动作再做一次。
+	D:字体大小及颜色
+		a:Java代码区域的字体大小和颜色：
+			window -- Preferences -- General -- Appearance -- Colors And Fonts -- Java修改 -- Java Edit Text Font
+		b:控制台和其他文件：
+			window -- Preferences -- General -- Appearance -- Colors And Fonts -- Basic -- Text Font
+		
+6:如果把位置给弄乱了，怎么办?(掌握)
+	window -- Reset Perspective
+
+7:快捷键(这里只说几个常用的,还有很多的快捷键作为资料给出)(掌握)
+	A:内容辅助键：alt+/ 起提示作用。
+		常见作用：
+			自动补全main方法。main然后alt+/
+			自动补全输出语句。syso然后alt+/
+	B:快捷键
+		a:格式化。
+			在代码区域：ctrl+shift+f
+			在代码区域：右键 -- source -- Format
+		b:导入包。
+			导入方式：
+				自己手动写完代码，需要导入包：ctrl+shift+o
+				有些时候，通过alt+/提示的类，会自动把包导入。
+			有些类在多个包下都有，请问，肿么办?
+				你按了提示后，它会把所有的包给你显示，让你选择。
+		c:注释问题
+			单行注释：
+				选中需要被注释的内容：ctrl+/
+				想取消注释，再次选中，然后ctrl+/
+			多行注释：
+				选中需要被注释的内容：ctrl+shift+/
+				想取消注释，再次选中，然后ctrl+shift+\
+		d:代码上下移动
+			选择要被移动的代码，然后alt+上/下箭头即可。
+
+8:项目的删除(掌握)
+	选中项目 -- 右键 -- delete
+
+	A:从项目区域中删除
+	B:从硬盘上删除
+		选择了一个选择框。
+		
+9:如何把别人用Eclipse写的一个项目导入呢(掌握)
+	A:在项目空白区域右键
+	B:找到Import
+	C:找到General，展开，并找到Existing Projects into Workspace
+	D:点击next，然后在一个新的界面中选择你要导入的项目路径。
+		注意：这里是找到项目名称。
+
+
+	如何查看项目所在路径：
+		选中项目 -- 右键 -- Properties -- Resource -- Location
+
+
+	注意事项：
+		a:如果空间中项目有这样的一个名称，就不能再新建或者导入相同的名称。
+		b:自己随便建立的文件夹是不能通过这种方式作为项目导入的。
+		c:改项目的名称不能随便改文件夹名字。因为在配置文件中还有。
+			项目路径下的.project中
+				<name>改为你想要的</name>
+
+10:制作帮助文档(理解)
+	A:首先编写源文件
+	B:针对源文件添加文档注释
+	C:选中项目--右键--Export--Java--Javadoc--Finish
+
+11:如何打jar包，以及jar包如何使用(理解)
+	jar是什么?
+		jar是多个class文件的压缩包。
+
+	A：打jar包
+		选中项目--右键--Export--Java--Jar--自己指定一个路径和一个名称--Finish
+	B：jar包有什么用,怎么用?
+		a:用于把别人写好的东西，直接拿过来使用。
+
+		b:怎么用
+			(1)找到jar包。
+			(2)复制jar包，粘贴到要使用的项目路径下。
+			(3)把jar添加到构建路径。classpath。
+				选中jar包，右键Build path -- add to build path
+			(4)按照正常用法用就可以了。
+
+12:如何提高代码的开发效率(掌握)
+	常见的操作：
+		A:自动生成get/set方法
+			在代码区域右键--source--Generate Getters and Setters...
+		B:写构造方法
+			a:无参构造方法 在代码区域右键--source--Generate Constructors from Superclass
+			b:带参构造方法 在代码区域右键--source--Generate Constructors using fields.. -- finish
+		
+		针对A,B操作的小技巧。
+		
+		C:如果继承抽象类，或者实现接口，请在创建类的时候选择这些内容。
+		  这样做的好处是：它会自动帮你添加继承或者实现，并把所有的抽象方法给重写了(空实现)。
+		D:@Override 注解。
+			作用是标记方法是重写父类的。如果有任何错误，就会报错。
+
+	Object是所有类的父类，所有类都直接或者间接的继承自Object。
+
+13:断点调试(Debug调试) (掌握)
+	断点：就是一个标记。
+	作用：可以看到程序的每一步执行流程。
+
+	A:如何设置断点
+		在语句的最左边，双击即可。
+	B:在哪里加
+		现在：在每一个方法的第一条有效语句上加。
+		以后：哪里不会加哪里。
+	C:怎么运行断点的程序
+		在代码区域--右键--Debug as--Java Appliaction
+
+		弹出一个界面：问你是否需要打开断点界面。并问你是否需要记录。
+			      是(Yes)，是(选中复选框)。
+	D:弹出了断点界面
+		a:点哪里
+			Step Over:跳过一行
+			F6:看到每一行的执行过程。
+		b:看哪里
+			看源代码:对照看程序的执行步骤
+			看Debug界面:对照看程序的执行步骤
+			看变量界面:看变量的产生，赋值，及消失。
+	E:如何去除断点
+		a:把添加的动作再做一遍
+		b:一键清除版
+			选择Debug界面--breakPoints--Remove All... 带两个x的。
